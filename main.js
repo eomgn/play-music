@@ -1,76 +1,75 @@
-// -------------
-
-// function startTimer(duration, display) {
-//   var timer = duration,
-//     minutes,
-//     seconds;
-
-//   setInterval(function () {
-//     minutes = parseInt(timer / 60, 10);
-//     seconds = parseInt(timer % 60, 10);
-
-//     minutes = minutes < 10 ? "0" + minutes : minutes;
-//     seconds = seconds < 10 ? "0" + seconds : seconds;
-
-//     display.textContent = minutes + ":" + seconds;
-
-//     if (--timer < 0) {
-//       timer = duration;
-//     }
-//   }, 1000);
-// }
-
-// window.onload = function () {
-//   var duration = 60 * 2.6; // Converter para segundos
-
-//   display = document.querySelector(".timer"); // selecionando o timer
-//   startTimer(duration, display); // iniciando o timer
-// };
-
 let qs = el => document.querySelector(el)
 
-let button = qs('.button')
 let durationInitial = qs('.durationInitial')
 let durationTotal = qs('.durationTotal')
 let range = qs('#range')
 
-let ranger
+let timerLeft = 200
+let timerRight = 0
+let intervalLeft
+let intervalRight
+let minutes
+let seconds
 
-let timer = 60
-let wsg = 0
-let minutos
-let segundos
+range.max = timerLeft
 
-range.max = timer
+function changingValuesLeft() {
+   minutes = parseInt(timerLeft / 60)
+   seconds = parseInt(timerLeft % 60)
 
-function xd() {
-   minutos = parseInt(timer / 60)
-   segundos = parseInt(timer % 60)
+   timerLeft > 0 ? timerLeft-- : timerLeft--
 
-   if (timer > 0) {
-      timer--
-   }
+   minutes = minutes < 10 ? '0' + minutes : minutes
+   seconds = seconds < 10 ? '0' + seconds : seconds
 
-   minutos = minutos < 10 ? '0' + minutos : ''
-
-   durationInitial.innerHTML = `${minutos}:${segundos}`
-
-   range.value = ranger++
+   durationInitial.innerHTML = `${minutes}:${seconds}`
 }
 
-function xp() {
-   minutos = parseInt(wsg / 60)
-   segundos = parseInt(wsg % 60)
-   if (timer > 0) {
-      wsg++
-   }
+function changingValuesRight() {
+   minutes = parseInt(timerRight / 60)
+   seconds = parseInt(timerRight % 60)
 
-   durationTotal.innerHTML = `${minutos}:${segundos}`
+   timerRight > 0 ? timerRight++ : timerRight++
+
+   minutes = minutes < 10 ? '0' + minutes : minutes
+   seconds = seconds < 10 ? '0' + seconds : seconds
+
+   durationTotal.innerHTML = `${minutes}:${seconds}`
+
+   range.value = timerRight
 }
 
-setInterval(xp, 1000)
-setInterval(xd, 1000)
+function start() {
+   intervalLeft = setInterval(() => {
+      if (timerLeft < 0) {
+         clearInterval(intervalLeft)
+      } else {
+         changingValuesLeft()
+      }
+   }, 100)
 
-// https://www.youtube.com/watch?v=rd4Mr08bX20
+   intervalRight = setInterval(() => {
+      if (timerRight === 200 + 1) {
+         clearInterval(intervalRight)
+      } else {
+         changingValuesRight()
+      }
+   }, 100)
+}
 
-// dividir em minutos e segundos separados por string com dois pontos
+function reset() {
+   timerLeft = 200
+   timerRight = 0
+   changingValuesRight()
+   range.value = timerRight
+}
+
+document
+   .querySelector('.c-wrapper__button--item-before')
+   .addEventListener('click', reset)
+document
+   .querySelector('.c-wrapper__button--item-play')
+   .addEventListener('click', start)
+document
+   .querySelector('.c-wrapper__button--item-next')
+   .addEventListener('click', reset)

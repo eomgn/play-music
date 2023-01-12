@@ -54,10 +54,11 @@ li {
 .c-wrapper__button {
    display: flex;
    justify-content: space-between;
+   margin-bottom: 1.8rem;
 }
 
-.c-wrapper__button {
-   margin-bottom: 1.8rem;
+.c-wrapper__button--item {
+   cursor: pointer;
 }
 
 .c-wrapper__details--info {
@@ -84,4 +85,5 @@ li {
 .durationInitial,
 .durationTotal {
    color: var(--text-gray);
+   padding-top: 0.6rem;
 }
