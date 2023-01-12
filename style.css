@@ -1,89 +1,108 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 /* ----------------- */
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-   font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
-   --text-default: #fff;
-   --text-gray: #e1e1e6;
-   --bg: #0f0d13;
-   --bg-wrapper: #2a2141;
+  --text-default: #fff;
+  --text-gray: #e1e1e6;
+  --bg: #0f0d13;
+  --bg-wrapper: #2a2141;
 }
 
 a {
-   text-decoration: none;
-   color: var(--text-default);
+  text-decoration: none;
+  color: var(--text-default);
 }
 
 ul,
 li {
-   list-style: none;
+  list-style: none;
 }
 
 .container {
-   width: 100vw;
-   height: 100vh;
-   background-color: var(--bg);
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg);
 
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .c-wrapper {
-   width: fit-content;
-   padding: 2.4rem;
+  width: fit-content;
+  padding: 2.4rem;
 
-   background-color: var(--bg-wrapper);
+  background-color: var(--bg-wrapper);
 
-   border-radius: 0.6rem;
+  border-radius: 0.6rem;
 }
 
 .c-wrapper__info {
-   margin: 1.8rem 0;
+  margin: 1.8rem 0;
 }
 
 .c-wrapper__button {
-   display: flex;
-   justify-content: space-between;
-   margin-bottom: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.8rem;
 }
 
 .c-wrapper__button--item {
-   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.c-wrapper__button--item img {
+  padding: 0.125rem;
 }
 
 .c-wrapper__details--info {
-   display: flex;
-   justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .c-wrapper__info--item.title {
-   font-size: 1.5rem;
-   font-weight: 700;
-   color: var(--text-default);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-default);
 }
 
 .c-wrapper__info--item {
-   font-size: 1rem;
-   font-weight: 400;
-   color: var(--text-gray);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-gray);
 }
 
 #range {
-   width: 100%;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 6px;
+}
+
+#range::-webkit-slider-thumb {
+  appearance: none;
+  height: 5px;
+  width: 2%;
+  border: 6px;
+  /* background-color: aqua; */
 }
 
 .durationInitial,
 .durationTotal {
-   color: var(--text-gray);
-   padding-top: 0.6rem;
+  color: var(--text-gray);
+  padding-top: 0.6rem;
+  display: flex;
 }

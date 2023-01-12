@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Player de Música | MGN</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Player de Música | MGN</title>
 
-      <!-- CSS -->
-      <link rel="stylesheet" href="style.css" />
-   </head>
-   <body>
-      <div class="container">
-         <div class="c-wrapper">
-            <div class="c-wrapper__image">
-               <img
-                  src="./assets/img.svg"
-                  alt="Imagem da música - Acorda Devinho"
-               />
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="c-wrapper">
+        <div class="c-wrapper__image">
+          <img src="./assets/img.svg" alt="Imagem da música - Acorda Devinho" />
+        </div>
+
+        <div class="c-wrapper__info">
+          <p class="c-wrapper__info--item title">Acorda Devinho</p>
+          <p class="c-wrapper__info--item">Banda Rocketseat</p>
+        </div>
+
+        <div class="c-wrapper__button">
+          <div class="c-wrapper__button--item before">
+            <img src="./assets/esquerda.svg" alt="Anterior" />
+          </div>
+          <div class="c-wrapper__button--item play">
+            <img src="./assets/play.svg" alt="Play" />
+          </div>
+          <div class="c-wrapper__button--item next">
+            <img src="./assets/direita.svg" alt="Próxima" />
+          </div>
+        </div>
+
+        <div class="c-wrapper__details">
+          <div class="c-wrapper__details--input">
+            <input type="range" id="range" value="0" />
+          </div>
+
+          <div class="c-wrapper__details--info">
+            <div class="durationInitial">
+              <p>03</p>
+              <p>:</p>
+              <p>20</p>
             </div>
-
-            <div class="c-wrapper__info">
-               <p class="c-wrapper__info--item title">Acorda Devinho</p>
-               <p class="c-wrapper__info--item">Banda Rocketseat</p>
+            <div class="durationTotal">
+              <p>00</p>
+              <p>:</p>
+              <p>00</p>
             </div>
-
-            <div class="c-wrapper__button">
-               <div class="c-wrapper__button--item-before">
-                  <img src="./assets/esquerda.svg" alt="Anterior" />
-               </div>
-               <div class="c-wrapper__button--item-play">
-                  <img src="./assets/play.svg" alt="Play" />
-               </div>
-               <div class="c-wrapper__button--item-next">
-                  <img src="./assets/direita.svg" alt="Próxima" />
-               </div>
-            </div>
-
-            <div class="c-wrapper__details">
-               <div class="c-wrapper__details--input">
-                  <input type="range" name="" id="range" value="0" />
-               </div>
-
-               <div class="c-wrapper__details--info">
-                  <div class="durationInitial">03:20</div>
-                  <div class="durationTotal">00:00</div>
-               </div>
-            </div>
-         </div>
+          </div>
+        </div>
       </div>
+    </div>
 
-      <!-- JS -->
-      <script src="./main.js"></script>
-   </body>
+    <!-- JS -->
+    <script src="./main.js"></script>
+  </body>
 </html>
