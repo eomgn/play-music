@@ -11,13 +11,13 @@
   </head>
   <body>
     <div class="container">
-      <div class="c-wrapper">
+      <main class="c-wrapper">
         <div class="c-wrapper__image">
           <img src="./assets/img.svg" alt="Imagem da música - Acorda Devinho" />
         </div>
 
         <div class="c-wrapper__info">
-          <p class="c-wrapper__info--item title">Acorda Devinho</p>
+          <marquee class="c-wrapper__info--item title">Acorda Devinho</marquee>
           <p class="c-wrapper__info--item">Banda Rocketseat</p>
         </div>
 
@@ -36,6 +36,7 @@
         <div class="c-wrapper__details">
           <div class="c-wrapper__details--input">
             <input type="range" id="range" value="0" />
+            <div id="progressBar"></div>
           </div>
 
           <div class="c-wrapper__details--info">
@@ -51,7 +52,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </main>
+
+      <footer></footer>
     </div>
 
     <!-- JS -->
