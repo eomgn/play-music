@@ -77,7 +77,7 @@ function start() {
     } else {
       changingValuesLeft()
     }
-  }, 1000)
+  }, 100)
 
   intervalRight = setInterval(() => {
     if (timerRight === 200 + 1) {
@@ -85,7 +85,7 @@ function start() {
     } else {
       changingValuesRight()
     }
-  }, 1000)
+  }, 100)
 }
 
 function reset() {
@@ -121,7 +121,7 @@ function footer() {
   let _footer = document.createElement('div')
 
   _footer.innerHTML = `
-  <a href=""><img src="https://avatars.githubusercontent.com/u/83884728?v=4" alt="Desenvolvedor" > <p>
+  <a href="https://www.linkedin.com/in/eomgn/" target="_blank"><img src="https://avatars.githubusercontent.com/u/83884728?v=4" alt="Desenvolvedor" > <p>
   Desenvolvido por Matheus Gabriel Nogueira</p></a>
   `
 

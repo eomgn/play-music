@@ -76,6 +76,12 @@ header div img.dark {
   animation: appear 0.9s forwards;
 }
 
+.c-wrapper__image img {
+  width: 11.8rem;
+  height: 11.8rem;
+  border-radius: 0.3rem;
+}
+
 .c-wrapper__info {
   margin: 1.8rem 0;
 }
@@ -164,6 +170,10 @@ footer p {
   align-items: center;
 
   font-size: 0.75rem;
+}
+
+footer p:hover {
+  text-decoration: underline;
 }
 /* ----------------- */
 
