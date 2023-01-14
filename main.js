@@ -77,7 +77,7 @@ function start() {
     } else {
       changingValuesLeft()
     }
-  }, 100)
+  }, 1000)
 
   intervalRight = setInterval(() => {
     if (timerRight === 200 + 1) {
@@ -85,7 +85,7 @@ function start() {
     } else {
       changingValuesRight()
     }
-  }, 100)
+  }, 1000)
 }
 
 function reset() {
