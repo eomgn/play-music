@@ -1,98 +1,77 @@
 //querySelector
-let qs = el => document.querySelector(el)
+let qs = (el) => document.querySelector(el);
 
 //duration of left and duration of right and input
-let durationInitial = qs('.durationInitial')
-let durationTotal = qs('.durationTotal')
-let range = qs('#range')
+let durationInitial = qs(".durationInitial");
+let durationTotal = qs(".durationTotal");
+let range = qs("#range");
+let play = document.querySelector(".c-wrapper__button--item.pause");
+let audio = qs("#audio");
 
-//timers and intervals
+//duration total from minutes and seconds for default
 
-let timerLeft = 200
-let timerRight = 0
-let intervalLeft
-let intervalRight
-let minutes
-let seconds
-
-/******************************/
+let minutes = Math.floor(audio.duration / 60);
+let seconds = Math.floor(audio.duration % 60);
+durationTotal.innerHTML = `<p>0${minutes}</p><p>:</p><p>${seconds}</p>
+`;
 
 /******************************/
 
 // value max of input range
-
-range.max = timerLeft
+range.max = Math.floor(audio.duration);
 
 /******************************/
 
 /*
-
-  --->> timerLeft
-
-
-  transforming the minutes and seconds so that it is decremented according to how time passes
+  --->> inital duration value from left
+  transforming duration from current time for minutes and seconds from left
 */
-
 function changingValuesLeft() {
-  minutes = parseInt(timerLeft / 60)
-  seconds = parseInt(timerLeft % 60)
+  minutes = parseInt(audio.currentTime / 60);
+  seconds = parseInt(audio.currentTime % 60);
 
-  timerLeft > 0 ? timerLeft-- : timerLeft--
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
 
-  minutes = minutes < 10 ? '0' + minutes : minutes
-  seconds = seconds < 10 ? '0' + seconds : seconds
-
-  durationInitial.innerHTML = `<p>${minutes}</p><p>:</p><p>${seconds}</p>`
+  durationInitial.innerHTML = `<p>${minutes}</p><p>:</p><p>${seconds}</p>`;
 }
 
 /*
-
-  --->> timerRight
-
-
-  transforming the minutes and seconds so that it is added according to how time passes
+  --->> inital duration value from right
+  transforming duration from current time for minutes and seconds from right
 */
-
 function changingValuesRight() {
-  minutes = parseInt(timerRight / 60)
-  seconds = parseInt(timerRight % 60)
+  minutes = Math.floor((audio.duration - audio.currentTime) / 60);
+  seconds = Math.floor((audio.duration - audio.currentTime) % 60) + 1;
 
-  timerRight > 0 ? timerRight++ : timerRight++
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
 
-  minutes = minutes < 10 ? '0' + minutes : minutes
-  seconds = seconds < 10 ? '0' + seconds : seconds
-
-  durationTotal.innerHTML = `<p>${minutes}</p><p>:</p><p>${seconds}</p>`
-  inputRange()
+  durationTotal.innerHTML = `<p>${minutes}</p><p>:</p><p>${seconds}</p>`;
 }
 
 /*
   assiging of setinterval at functions and added conditionals
 */
-
 function start() {
-  intervalLeft = setInterval(() => {
-    if (timerLeft < 0) {
-      clearInterval(intervalLeft)
-    } else {
-      changingValuesLeft()
-    }
-  }, 1000)
+  if (play.classList.contains("pause")) {
+    play.classList.remove("pause");
+    play.classList.add("play");
 
-  intervalRight = setInterval(() => {
-    if (timerRight === 200 + 1) {
-      clearInterval(intervalRight)
-    } else {
-      changingValuesRight()
-    }
-  }, 1000)
-}
+    qs(".c-wrapper__button--item.play img").src = "./assets/play.svg";
+    audio.play();
 
-function reset() {
-  timerLeft = 200
-  timerRight = 0
-  changingValuesRight()
-  inputRange()
+    setInterval(() => {
+      changingValuesLeft();
+      changingValuesRight();
+      inputRange();
+    });
+  } else {
+    play.classList.remove("play");
+    play.classList.add("pause");
+    qs(".c-wrapper__button--item.pause img").src = "./assets/pause.svg";
+    audio.pause();
+  }
 }
 
 /******************************/
@@ -100,14 +79,13 @@ function reset() {
 /*
   progress of input
 */
-
 function inputRange() {
-  range.value = timerRight
+  range.value = audio.currentTime;
 
-  let rangeInput = document.getElementById('range')
-  let progressBar = document.getElementById('progressBar')
+  let rangeInput = document.getElementById("range");
+  let progressBar = document.getElementById("progressBar");
 
-  console.log((progressBar.style.width = `${rangeInput.value / 2}%`))
+  progressBar.style.width = `${rangeInput.value / 2}%`;
 }
 
 /******************************/
@@ -115,17 +93,16 @@ function inputRange() {
 /*
   creating footer
 */
-
 function footer() {
-  let footer = qs('footer')
-  let _footer = document.createElement('div')
+  let footer = qs("footer");
+  let _footer = document.createElement("div");
 
   _footer.innerHTML = `
   <a href="https://www.linkedin.com/in/eomgn/" target="_blank"><img src="https://avatars.githubusercontent.com/u/83884728?v=4" alt="Desenvolvedor" > <p>
   Desenvolvido por Matheus Gabriel Nogueira</p></a>
-  `
+  `;
 
-  footer.append(_footer)
+  footer.append(_footer);
 }
 
 /******************************/
@@ -134,7 +111,5 @@ function footer() {
   call some functions
 */
 
-footer()
-document.querySelector('.before').addEventListener('click', reset)
-document.querySelector('.play').addEventListener('click', start)
-document.querySelector('.next').addEventListener('click', reset)
+footer();
+document.querySelector(".pause").addEventListener("click", start);
