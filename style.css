@@ -19,6 +19,15 @@ html {
   --bg-input-opct-full: rgba(217, 217, 217, 1);
 }
 
+body.themeLight {
+  --text-default: rgb(0, 0, 0);
+  --text-gray: rgb(225, 225, 230);
+  --bg: rgb(255, 255, 255);
+  --bg-wrapper: rgb(114, 119, 120);
+  --bg-input-opct-small: rgba(217, 217, 217, 0.3);
+  --bg-input-opct-full: rgb(0, 0, 0);
+}
+
 a {
   text-decoration: none;
   color: var(--text-default);
@@ -40,29 +49,16 @@ li {
   flex-direction: column;
 }
 
-header {
-  opacity: 0;
-  transform: translateX(100px);
-  animation: appear 0.9s forwards;
-
-  margin-top: 2rem;
-}
-
-header div {
-  position: absolute;
-  top: -2rem;
+.theme img {
+  width: 32px;
+  height: 32px;
   cursor: pointer;
 }
 
-header div > img {
-  width: 1.56rem;
-  height: 1.56rem;
-  position: absolute;
-}
-
-header div img.dark {
+.theme .dark {
   display: none;
 }
+
 .c-wrapper {
   width: fit-content;
   padding: 2.4rem;
