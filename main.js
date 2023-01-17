@@ -14,12 +14,12 @@ audio.addEventListener("loadedmetadata", () => {
   let minutes = Math.floor(audio.duration / 60);
   let seconds = Math.floor(audio.duration % 60);
   durationTotal.innerHTML = `<p>0${minutes}</p><p>:</p><p>${seconds}</p>`;
+  range.max = Math.floor(audio.duration);
 });
 
 /******************************/
 
 // value max of input range
-range.max = Math.floor(audio.duration);
 
 /******************************/
 
@@ -30,8 +30,6 @@ range.max = Math.floor(audio.duration);
 function changingValuesLeft() {
   minutes = parseInt(audio.currentTime / 60);
   seconds = parseInt(audio.currentTime % 60);
-
-  console.log(minutes);
 
   minutes = minutes < 10 ? "0" + minutes : minutes;
   seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -83,12 +81,12 @@ function start() {
   progress of input
 */
 function inputRange() {
-  range.value = audio.currentTime;
+  range.value = audio.currentTime / 2.15;
 
   let rangeInput = document.getElementById("range");
   let progressBar = document.getElementById("progressBar");
 
-  progressBar.style.width = `${rangeInput.value / 2}%`;
+  progressBar.style.width = `${rangeInput.value}%`;
 }
 
 /******************************/
